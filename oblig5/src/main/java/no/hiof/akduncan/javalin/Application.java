@@ -6,7 +6,7 @@ import io.javalin.http.Handler;
 import io.javalin.plugin.rendering.vue.VueComponent;
 import no.hiof.akduncan.javalin.controller.PlanetController;
 import no.hiof.akduncan.javalin.controller.UniverseController;
-import no.hiof.akduncan.javalin.repository.UniverseCSVRepository;
+import no.hiof.akduncan.javalin.repository.UniverseJSONRepository;
 import org.jetbrains.annotations.NotNull;
 
 public class Application {
@@ -22,7 +22,7 @@ public class Application {
         app.get("/planet-systems/:planet-system-id/planets/:planet-id/update", new VueComponent("planet-update"));
         app.get("/planet-systems/:planet-system-id/createplanet", new VueComponent("planet-create"));
 
-        UniverseCSVRepository universeRepository = new UniverseCSVRepository();
+        UniverseJSONRepository universeRepository = new UniverseJSONRepository();
         UniverseController universeController = new UniverseController(universeRepository);
         PlanetController planetController = new PlanetController(universeRepository);
 
