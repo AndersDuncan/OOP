@@ -18,6 +18,9 @@ public abstract class NaturalSatellite extends CelestialBody {
         this.centralCelestialBody = centralCelestialBody;
     }
 
+    public NaturalSatellite() {
+    }
+
     public static int getAU() {
         return AU;
     }

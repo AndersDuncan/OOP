@@ -20,6 +20,13 @@ public class Planet extends NaturalSatellite{
         this.pictureUrl = pictureUrl;
     }
 
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public Planet() {
+    }
+
     public double massInMjup() {
         return super.getMass() / Mjup;
     }

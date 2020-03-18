@@ -7,6 +7,7 @@ import no.hiof.akduncan.javalin.Application;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UniverseController {
     private IUniverseRepository universeRepository;
@@ -15,14 +16,16 @@ public class UniverseController {
         this.universeRepository = universeRepository;
     }
 
+
     public void getAllSystems(Context context) {
         //String name = context.pathParam(":planet-system-id");
 
-        ArrayList<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
+        List<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
 
         context.json(allSystems);
 
     }
+
 
     public void getAPlanetSystem(Context context) {
         String systemID = context.pathParam(":planet-system-id");
@@ -33,5 +36,4 @@ public class UniverseController {
 
         context.json(aSystem);
     }
-
 }

@@ -19,4 +19,5 @@ dependencies {
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9'
     compile 'org.slf4j:slf4j-simple:1.7.26'
     compile 'org.webjars.npm:vue:2.6.10'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.8'
 }

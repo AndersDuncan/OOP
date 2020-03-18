@@ -4,7 +4,7 @@ import io.javalin.http.Context;
 import no.hiof.akduncan.javalin.model.CelestialBody;
 import no.hiof.akduncan.javalin.model.Planet;
 import no.hiof.akduncan.javalin.model.PlanetSystem;
-import no.hiof.akduncan.javalin.repository.IUniverseRepository;
+import no.hiof.akduncan.javalin.repository.*;
 import no.hiof.akduncan.javalin.Application;
 
 import java.lang.reflect.Array;

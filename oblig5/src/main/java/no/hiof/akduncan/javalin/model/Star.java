@@ -1,22 +1,35 @@
 package no.hiof.akduncan.javalin.model;
 
 public class Star extends CelestialBody {
-    private double effectiveTemp;
+    private double effectiveTemperature;
+    private String pictureUrl;
     public static final double Msun = 1.98892*(Math.pow(10,30));
     public static final double Rsun = 695700;
 
-    public Star(String name, double mass, double radius, double effectiveTemp){
+    public Star(String name, double mass, double radius, String pictureUrl, double effectiveTemperature){
 
         super(name, mass, radius);
-        this.effectiveTemp = effectiveTemp;
+        this.effectiveTemperature = effectiveTemperature;
+        this.pictureUrl = pictureUrl;
     }
 
-    public double getEffectiveTemp() {
-        return effectiveTemp;
+    public Star() {
     }
 
-    public void setEffectiveTemp(double effectiveTemp) {
-        this.effectiveTemp = effectiveTemp;
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public double getEffectiveTemperature() {
+        return effectiveTemperature;
+    }
+
+    public void setEffectiveTemperature(double effectiveTemp) {
+        this.effectiveTemperature = effectiveTemp;
     }
 
     public double massInMsun() {
@@ -37,7 +50,7 @@ public class Star extends CelestialBody {
 
     @Override
     public String toString(){
-        return "Name: " + super.getName() + ". radius: " + super.getRadius() + " km . mass: " + super.getMass() + " kg . Temp: " + effectiveTemp
+        return "Name: " + super.getName() + ". radius: " + super.getRadius() + " km . mass: " + super.getMass() + " kg . Temp: " + effectiveTemperature
                 + " Kelvin. And it's mass in Msun is: " + massInMsun() + " with radius in Rsun being: " + radiusInRsun();
     }
 

@@ -9,12 +9,16 @@ public class PlanetSystem implements Comparable<PlanetSystem> {
     private ArrayList<Planet> planets;
     private String pictureUrl;
 
-    public String getpictureUrl() {
-        return pictureUrl;
-    }
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public PlanetSystem() {
     }
 
     public PlanetSystem(String name, Star centerStar, ArrayList<Planet> planets, String pictureUrl) {
