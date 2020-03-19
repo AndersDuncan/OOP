@@ -3,7 +3,7 @@ package no.hiof.akduncan.javalin.repository;
 import io.javalin.http.Context;
 import no.hiof.akduncan.javalin.model.*;
 import java.util.ArrayList;
-
+/*
 public class UniverseRepository implements IUniverseRepository {
     public ArrayList<PlanetSystem> planetSystemsArray = new ArrayList<>();
 
@@ -95,3 +95,5 @@ public class UniverseRepository implements IUniverseRepository {
     }
 
 }
+
+ */
