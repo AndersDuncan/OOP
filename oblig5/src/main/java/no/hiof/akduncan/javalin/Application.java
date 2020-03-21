@@ -58,6 +58,29 @@ public class Application {
             }
         });
 
+       app.get("/api/planet-systems/:planet-system-id/planets/:planet-id/delete", new Handler() {
+           @Override
+           public void handle(Context ctx) throws Exception {
+               planetController.deleteAPlanet(ctx);
+           }
+       });
+
+       app.post("/api/planet-systems/:planet-system-id/createplanet", new Handler() {
+           @Override
+           public void handle(Context ctx) throws Exception {
+               planetController.createAPlanet(ctx);
+           }
+       });
+
+        app.post("/api/planet-systems/:planet-system-id/planets/:planet-id/update", new Handler() {
+            @Override
+            public void handle(Context ctx) throws Exception {
+                planetController.deleteAPlanet(ctx);
+                planetController.createAPlanet(ctx);
+            }
+        });
+
+
 
     }
 }

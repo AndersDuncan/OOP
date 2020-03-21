@@ -19,28 +19,7 @@ public class PlanetController {
         this.universeRepository = universeRepository;
     }
 
-    public void getAllPlanets(Context ctx) {
-        String relevantSystem = ctx.pathParam(":planet-system-id");
-        String sortBy = ctx.queryParam("sort_by");
 
-        ArrayList<Planet> allPlanetsinSystem = universeRepository.getAllPlanets(relevantSystem);
-
-
-            switch (sortBy) {
-                case "num":
-                    break;
-                case "name":
-                    allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getName));
-                    break;
-                case "mass":
-                    allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getMass).reversed());
-                    break;
-                case "radius":
-                    allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getRadius).reversed());
-                    break;
-            }
-        ctx.json(allPlanetsinSystem);
-        }
 
     public void getAPlanet(Context ctx) {
         String relevantSystem = ctx.pathParam(":planet-system-id");
@@ -52,6 +31,78 @@ public class PlanetController {
 
     }
 
+    public void getAllPlanets(Context ctx) {
+        String relevantSystem = ctx.pathParam(":planet-system-id");
+        String sortBy = ctx.queryParam("sort_by");
+
+        ArrayList<Planet> allPlanetsinSystem = universeRepository.getAllPlanets(relevantSystem);
 
 
+        switch (sortBy) {
+            case "num":
+                break;
+            case "name":
+                allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getName));
+                break;
+            case "mass":
+                allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getMass).reversed());
+                break;
+            case "radius":
+                allPlanetsinSystem.sort(Comparator.comparing(CelestialBody::getRadius).reversed());
+                break;
+        }
+        ctx.json(allPlanetsinSystem);
+    }
+
+    public void deleteAPlanet(Context ctx) {
+        String relevantSystem = ctx.pathParam(":planet-system-id");
+        String relevantPlanet = ctx.pathParam(":planet-id");
+
+
+        universeRepository.deletePlanet(relevantSystem, relevantPlanet);
+
+        universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
+        ctx.redirect("/planet-systems/" + relevantSystem);
+    }
+
+    public void createAPlanet(Context ctx) {
+        String relevantSystem = ctx.pathParam(":planet-system-id");
+        String name = ctx.formParam("name");
+        double mass = Double.parseDouble(ctx.formParam("mass"));
+        double radius = Double.parseDouble(ctx.formParam("radius"));
+        double semiMajorAxis = Double.parseDouble(ctx.formParam("semiMajorAxis"));
+        double eccentricity = Double.parseDouble(ctx.formParam("eccentricity"));
+        double orbitalPeriod = Double.parseDouble(ctx.formParam("orbitalPeriod"));
+        String pictureUrl = ctx.formParam("pictureUrl");
+        System.out.println("mass print: " + mass);
+        Planet usermade = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
+        System.out.println(usermade);
+        universeRepository.getAllPlanets(relevantSystem).add(usermade);
+        universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
+        ctx.json(usermade);
+        ctx.redirect("/planet-systems/" + relevantSystem);
+    }
+
+/*
+    public void updateAPlanet(Context ctx) {
+        String relevantSystem = ctx.pathParam(":planet-system-id");
+        String relevantPlanet = ctx.pathParam(":planet-id");
+
+        String name = ctx.formParam("name");
+        double mass = Double.parseDouble(ctx.formParam("mass"));
+        double radius = Double.parseDouble(ctx.formParam("radius"));
+        double semiMajorAxis = Double.parseDouble(ctx.formParam("semiMajorAxis"));
+        double eccentricity = Double.parseDouble(ctx.formParam("eccentricity"));
+        double orbitalPeriod = Double.parseDouble(ctx.formParam("orbitalPeriod"));
+        String pictureUrl = ctx.formParam("pictureUrl");
+        Planet  = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
+        System.out.println(usermade);
+        universeRepository.getAllPlanets(relevantSystem).add(usermade);
+
+        universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
+        ctx.json(usermade);
+        ctx.redirect("/planet-systems/" + relevantSystem);
+    }
+
+ */
 }

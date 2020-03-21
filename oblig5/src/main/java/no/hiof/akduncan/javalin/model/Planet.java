@@ -15,7 +15,7 @@ public class Planet extends NaturalSatellite{
         this.pictureUrl = pictureUrl;
     }
 
-    public Planet(String name, double mass, double radius, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
+    public Planet(String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody,String pictureUrl) {
         super(name, mass, radius, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody);
         this.pictureUrl = pictureUrl;
     }

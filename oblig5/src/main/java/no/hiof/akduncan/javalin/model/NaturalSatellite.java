@@ -6,11 +6,11 @@ import static no.hiof.akduncan.javalin.model.Planet.gravity;
 public abstract class NaturalSatellite extends CelestialBody {
     private double semiMajorAxis;
     private double eccentricity;
-    private int orbitalPeriod;
+    private double orbitalPeriod;
     private CelestialBody centralCelestialBody;
     public static final int AU = 149597871;
 
-    public NaturalSatellite(String name, double mass, double radius, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody) {
+    public NaturalSatellite(String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody) {
         super(name, mass, radius);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
@@ -19,6 +19,9 @@ public abstract class NaturalSatellite extends CelestialBody {
     }
 
     public NaturalSatellite() {
+    }
+
+    public NaturalSatellite(String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod) {
     }
 
     public static int getAU() {
@@ -41,11 +44,11 @@ public abstract class NaturalSatellite extends CelestialBody {
         this.eccentricity = eccentricity;
     }
 
-    public int getOrbitalPeriod() {
+    public double getOrbitalPeriod() {
         return orbitalPeriod;
     }
 
-    public void setOrbitalPeriod(int orbitalPeriod) {
+    public void setOrbitalPeriod(double orbitalPeriod) {
         this.orbitalPeriod = orbitalPeriod;
     }
 

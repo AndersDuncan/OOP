@@ -10,6 +10,10 @@ public interface IUniverseRepository {
     ArrayList<Planet> getAllPlanets(String name);
     Planet getAPlanet(String systemName, String planetName);
     PlanetSystem getAPlanetSystem(String name);
+    Planet makePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod,CelestialBody centralCelestialBody, String pictureUrl);
+    Planet UpdatePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod,CelestialBody centralCelestialBody, String pictureUrl);
+    void deletePlanet(String systemName, String planetName);
+    void saveToJson(String filename, List<PlanetSystem> name);
 }
 
 

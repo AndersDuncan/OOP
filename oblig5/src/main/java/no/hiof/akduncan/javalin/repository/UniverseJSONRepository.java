@@ -8,11 +8,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class UniverseJSONRepository implements IUniverseRepository{
 
-    static List<PlanetSystem> newList = fromJson("planets_4000.json");
+    static List<PlanetSystem> newList = fromJson("planets_100.json");
 
 
     public static List<PlanetSystem> fromJson(String filename) {
@@ -31,18 +32,18 @@ public class UniverseJSONRepository implements IUniverseRepository{
         return planetSystems;
     }
 
-    public static void saveToJson(String filename, List<PlanetSystem> planetSystems) {
+    @Override
+    public void saveToJson(String filename, List<PlanetSystem> planetSystems) {
         try {
             File file = new File(filename);
             ObjectMapper objectMapper = new ObjectMapper();
 
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, newList);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, planetSystems);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-
 
     @Override
     public List<PlanetSystem> getPlanetSystems() {
@@ -84,6 +85,31 @@ public class UniverseJSONRepository implements IUniverseRepository{
         return null;
     }
 
+    @Override
+    public void deletePlanet(String systemName, String planetName) {
+        PlanetSystem aSystem = getAPlanetSystem(systemName);
+
+        if (aSystem != null) {
+            for(Iterator<Planet> iterator = aSystem.getPlanets().iterator(); iterator.hasNext();){
+                Planet aPlanet = iterator.next();
+                if(aPlanet.getName().equals(planetName)){
+                    iterator.remove();
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public Planet makePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
+        PlanetSystem aSystem = getAPlanetSystem(systemName);
+        return new Planet(name, mass, radius, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody, pictureUrl);
+    }
+
+    @Override
+    public Planet UpdatePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod,CelestialBody centralCelestialBody, String pictureUrl) {
+        return null;
+    }
 }
 
 
