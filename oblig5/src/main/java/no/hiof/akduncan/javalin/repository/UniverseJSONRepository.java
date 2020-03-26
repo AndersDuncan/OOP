@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class UniverseJSONRepository implements IUniverseRepository{
+public class UniverseJSONRepository implements IUniverseRepository {
 
     static List<PlanetSystem> newList = fromJson("planets_100.json");
 
@@ -32,17 +32,29 @@ public class UniverseJSONRepository implements IUniverseRepository{
         return planetSystems;
     }
 
+    public class saveRunnable implements Runnable{
+        private String filename;
+        private List<PlanetSystem> planetSystems;
+        public saveRunnable(String filename, List<PlanetSystem> planetSystems){
+            this.filename = filename;
+            this.planetSystems = planetSystems;
+        }
+        @Override
+        public void run() {
+            try {
+                File file = new File(filename);
+                ObjectMapper objectMapper = new ObjectMapper();
+
+                objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, planetSystems);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void saveToJson(String filename, List<PlanetSystem> planetSystems) {
-        try {
-            File file = new File(filename);
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, planetSystems);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        Runnable save = new saveRunnable(filename,planetSystems);
+        new Thread(save).start();
     }
 
     @Override
@@ -99,6 +111,8 @@ public class UniverseJSONRepository implements IUniverseRepository{
         }
 
     }
+
+
 
     @Override
     public Planet makePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {

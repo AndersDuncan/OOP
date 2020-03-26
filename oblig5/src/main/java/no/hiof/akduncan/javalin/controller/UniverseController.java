@@ -19,7 +19,7 @@ public class UniverseController {
 
 
     public void getAllSystems(Context context) {
-        //String name = context.pathParam(":planet-system-id");
+
 
         //For CSV
         //ArrayList<PlanetSystem> allSystems = universeRepository.getPlanetSystems();

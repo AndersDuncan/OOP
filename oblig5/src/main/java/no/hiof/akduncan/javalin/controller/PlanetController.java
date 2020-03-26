@@ -20,7 +20,6 @@ public class PlanetController {
     }
 
 
-
     public void getAPlanet(Context ctx) {
         String relevantSystem = ctx.pathParam(":planet-system-id");
         String relevantPlanet = ctx.pathParam(":planet-id");
@@ -61,6 +60,7 @@ public class PlanetController {
 
         universeRepository.deletePlanet(relevantSystem, relevantPlanet);
 
+
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
         ctx.redirect("/planet-systems/" + relevantSystem);
     }
@@ -76,6 +76,7 @@ public class PlanetController {
         String pictureUrl = ctx.formParam("pictureUrl");
         Planet usermade = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
         universeRepository.getAllPlanets(relevantSystem).add(usermade);
+
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
         ctx.json(usermade);
         ctx.redirect("/planet-systems/" + relevantSystem);
@@ -100,6 +101,7 @@ public class PlanetController {
         aPlanet.setEccentricity(eccentricity);
         aPlanet.setOrbitalPeriod(orbitalPeriod);
         aPlanet.setPictureUrl(pictureUrl);
+
 
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
         ctx.json(aPlanet);

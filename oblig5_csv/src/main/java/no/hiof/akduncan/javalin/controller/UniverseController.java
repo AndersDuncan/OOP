@@ -38,11 +38,3 @@ public class UniverseController {
        context.json(aSystem);
     }
 }
-
-
-
-
-    public void skriftilFIL(File kilde) {
-        run()
-        //method body
-    }
