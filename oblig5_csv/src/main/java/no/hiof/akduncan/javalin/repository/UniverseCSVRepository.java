@@ -4,6 +4,8 @@ package no.hiof.akduncan.javalin.repository;
 import no.hiof.akduncan.javalin.model.*;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
@@ -13,70 +15,117 @@ public class UniverseCSVRepository implements IUniverseRepository{
 
     File source = new File("planets_100.csv");
 
-    HashMap<String, PlanetSystem> newMap = fromCSV(source);
+    HashMap<String, PlanetSystem> newMap = new HashMap<>();
 
-    private HashMap<String, PlanetSystem> fromCSV(File file){
-        HashMap<String, PlanetSystem> systemMap = new HashMap<>();
-        String meh = "";
-
+    {
         try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                meh += scanner.nextLine() + "\n";
-            }
+            newMap = fromCSV(source);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-            catch(FileNotFoundException e) {
-                e.printStackTrace();
+    }
+
+    private HashMap<String, PlanetSystem> fromCSV(File file) throws IOException {
+        HashMap<String, PlanetSystem> systemMap = new HashMap<>();
+        String meh = new String(Files.readAllBytes(file.toPath()));
+
+        for (String line : meh.split("\n")) {
+            String[] item = line.split(",", -1);
+
+            String systemName = item[0];
+            String systemPic = item[1];
+            String starName = item[2];
+            String starMass = item[3];
+            String starRadius = item[4];
+            String starEffectiveTemp = item[5];
+            String starPic = item[6];
+            String planetName = item[7];
+            String planetMass = item[8];
+            String planetRadius = item[9];
+            String planetSemiMajorAxis = item[10];
+            String planetEccentricity = item[11];
+            String planetOrbital = item[12];
+            String planetPic = item[13];
+
+            double parsedStarMass = (Double.parseDouble(starMass));
+            double parsedStarRadius = (Double.parseDouble(starRadius));
+            double parsedStarEffectiveTemp = (Double.parseDouble(starEffectiveTemp));
+            double parsedPlanetMass = (Double.parseDouble(planetMass));
+            double parsedPlanetRadius = (Double.parseDouble(planetRadius));
+            double parsedPlanetSemiMajorAxis = (Double.parseDouble(planetSemiMajorAxis));
+            double parsedPlanetEccentricity = (Double.parseDouble(planetEccentricity));
+            double parsedPlanetOrbital = (Double.parseDouble(planetOrbital));
+
+            PlanetSystem tempSystem;
+            Star tempStar;
+
+            if (systemMap.containsKey(systemName)) {
+                tempSystem = systemMap.get(systemName);
+
+                tempStar = tempSystem.getCenterStar();
+            } else {
+                tempStar = new Star(starName, parsedStarMass, parsedStarRadius, starPic, parsedStarEffectiveTemp);
+                tempSystem = new PlanetSystem(systemName, tempStar, systemPic);
             }
-        System.out.println(meh);
-        List<String> items = Arrays.asList(meh.split("\\r_\\n"));
-        for(String item : items) {
-            List<String> items2 = Arrays.asList(item.split(","));
+            tempSystem.addPlanet(new Planet(planetName, parsedPlanetMass, parsedPlanetRadius, parsedPlanetSemiMajorAxis, parsedPlanetEccentricity, parsedPlanetOrbital, tempStar, planetPic));
+            systemMap.put(systemName, tempSystem);
 
-            double starMass = parseDouble(items2.get(3)),
-                    starRadius = parseDouble(items2.get(4)),
-                    starEffectiveTemperatur = parseDouble(items2.get(5));
-
-            Star tmpStar = new Star(items2.get(2), starMass, starRadius, items2.get(6), starEffectiveTemperatur);
-            PlanetSystem tmpSystem = new PlanetSystem(items2.get(0), tmpStar, items2.get(0));
-            if(!systemMap.containsKey(items2.get(0))){
-                systemMap.put(items2.get(0), tmpSystem);
-            }
-            double planetMass = parseDouble(items2.get(8)),
-                    planetRadius = parseDouble(items2.get(9)),
-                    planetAxis = parseDouble(items2.get(10)),
-                    planetEccentricity = parseDouble(items2.get(11)),
-                    planetOrbitalPeriod = parseInt(items2.get(12));
-
-            Planet tempPlanet = new Planet(items2.get(7), planetMass, planetRadius, planetAxis, planetEccentricity, (int) planetOrbitalPeriod, tmpStar, items2.get(13));
-            systemMap.get(items2.get(0)).addPlanet(tempPlanet);
-            //System.out.println("a print: " + systemMap.get(items2.get(0)));
         }
         return systemMap;
     }
 
     @Override
-    public PlanetSystem getPlanetSystems() {
-        for (String key : newMap.keySet()) {
-            return newMap.get(key);
+    public ArrayList<PlanetSystem> getPlanetSystems() {
+        System.out.println(newMap);
+        return new ArrayList<PlanetSystem>(newMap.values());
+
+    }
+
+    @Override
+    public ArrayList<Planet> getAllPlanets(String name) {
+        return newMap.get(name).getPlanets();
+
+    }
+
+    @Override
+    public Planet getAPlanet(String systemName, String planetName) {
+        PlanetSystem aSystem = getAPlanetSystem(systemName);
+
+        if (aSystem != null) {
+            for(Planet aPlanet: aSystem.getPlanets()) {
+                if (aPlanet.getName().equals(planetName))
+                    return aPlanet;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public PlanetSystem getAPlanetSystem(String name) {
+        return newMap.get(name);
+    }
+
+    public void writeToCSV(ArrayList<PlanetSystem> planetSystems, File file) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+
+            for( PlanetSystem aSystem : planetSystems ) {
+
+                for (int i = 0; i < aSystem.getPlanets().size(); i++){
+                    bufferedWriter.write(aSystem.getName() + "," + aSystem.getPictureUrl() + "," + aSystem.getCenterStar().getName() + "," + aSystem.getCenterStar().getMass() + ","
+                            + aSystem.getCenterStar().getRadius() + "," + aSystem.getCenterStar().getEffectiveTemperature() + "," + aSystem.getCenterStar().getPictureUrl() + "," + aSystem.getPlanets().get(i).getName() + "," +
+                            aSystem.getPlanets().get(i).getMass() + "," + aSystem.getPlanets().get(i).getRadius() + "," + aSystem.getPlanets().get(i).getSemiMajorAxis() + "," + aSystem.getPlanets().get(i).getEccentricity() + "," +
+                            aSystem.getPlanets().get(i).getOrbitalPeriod() + "," + aSystem.getPlanets().get(i).getPictureUrl() + "\n");
+                }
+
+            }
+        } catch (FileNotFoundException fnfe) {
+            System.out.println(fnfe.getMessage());
+        } catch (IOException ioexc) {
+            System.out.println(ioexc.getLocalizedMessage());
         }
 
-        return null;
     }
 
-    @Override
-    public ArrayList<Planet> getAllPlanets() {
-        return null;
-    }
 
-    @Override
-    public Planet getAPlanet() {
-        return null;
-    }
-
-    @Override
-    public no.hiof.akduncan.javalin.model.PlanetSystem getAPlanetSystem() {
-        return null;
-    }
 }
 

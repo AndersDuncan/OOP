@@ -32,7 +32,7 @@ public class UniverseJSONRepository implements IUniverseRepository{
         return planetSystems;
     }
 
-    @Override
+
     public void saveToJson(String filename, List<PlanetSystem> planetSystems) {
         try {
             File file = new File(filename);
@@ -107,9 +107,18 @@ public class UniverseJSONRepository implements IUniverseRepository{
     }
 
     @Override
-    public Planet UpdatePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod,CelestialBody centralCelestialBody, String pictureUrl) {
+    public Planet UpdatePlanet(String systemName, String name) {
+        PlanetSystem aSystem = getAPlanetSystem(systemName);
+
+        if (aSystem != null) {
+            for(Planet aPlanet: aSystem.getPlanets()) {
+                if (aPlanet.getName().equals(name))
+                    return aPlanet;
+            }
+        }
         return null;
     }
 }
+
 
 

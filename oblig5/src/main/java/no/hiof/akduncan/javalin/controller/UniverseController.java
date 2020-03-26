@@ -5,6 +5,7 @@ import no.hiof.akduncan.javalin.model.PlanetSystem;
 import no.hiof.akduncan.javalin.repository.IUniverseRepository;
 import no.hiof.akduncan.javalin.Application;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,11 @@ public class UniverseController {
     public void getAllSystems(Context context) {
         //String name = context.pathParam(":planet-system-id");
 
+        //For CSV
+        //ArrayList<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
+
         List<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
+
 
         context.json(allSystems);
 

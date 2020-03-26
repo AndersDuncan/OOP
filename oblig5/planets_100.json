@@ -39,11 +39,11 @@
   },
   "planets" : [ {
     "type" : "Planet",
-    "name" : "hehe smil",
+    "name" : "Kepler-1397 b",
     "radius" : 10938.276,
-    "mass" : 123.0,
-    "semiMajorAxis" : 123.0,
-    "eccentricity" : 123.0,
+    "mass" : 0.0,
+    "semiMajorAxis" : 0.0,
+    "eccentricity" : 0.0,
     "orbitalPeriod" : 47.449955,
     "centralCelestialBody" : {
       "type" : "star",
@@ -53,7 +53,7 @@
       "effectiveTemperature" : 6026.0,
       "pictureUrl" : "http://bit.ly/336nzNZ"
     },
-    "pictureUrl" : "https://raw.githubusercontent.com/olawp/OOP/master/Obliger/oblig4/src/no/hiof/olawp/oblig4/olaThinking.png"
+    "pictureUrl" : "http://bit.ly/2Q2PngD"
   } ],
   "pictureUrl" : "http://bit.ly/2Iz4jPB"
 }, {
@@ -448,41 +448,7 @@
   },
   "planets" : [ {
     "type" : "Planet",
-    "name" : "Mercury",
-    "radius" : 2439.7,
-    "mass" : 3.283E23,
-    "semiMajorAxis" : 0.387,
-    "eccentricity" : 0.206,
-    "orbitalPeriod" : 88.0,
-    "centralCelestialBody" : {
-      "type" : "star",
-      "name" : "Sun",
-      "radius" : 695342.0,
-      "mass" : 1.9885E30,
-      "effectiveTemperature" : 5777.0,
-      "pictureUrl" : "http://bit.ly/333CTus"
-    },
-    "pictureUrl" : "http://bit.ly/2TB2Heo"
-  }, {
-    "type" : "Planet",
-    "name" : "Venus",
-    "radius" : 6051.8,
-    "mass" : 4.867E24,
-    "semiMajorAxis" : 0.723,
-    "eccentricity" : 0.007,
-    "orbitalPeriod" : 225.0,
-    "centralCelestialBody" : {
-      "type" : "star",
-      "name" : "Sun",
-      "radius" : 695342.0,
-      "mass" : 1.9885E30,
-      "effectiveTemperature" : 5777.0,
-      "pictureUrl" : "http://bit.ly/333CTus"
-    },
-    "pictureUrl" : "http://bit.ly/2W3p4L9"
-  }, {
-    "type" : "Planet",
-    "name" : "Earth",
+    "name" : "hehe",
     "radius" : 6371.0,
     "mass" : 5.972E24,
     "semiMajorAxis" : 1.0,
@@ -497,6 +463,23 @@
       "pictureUrl" : "http://bit.ly/333CTus"
     },
     "pictureUrl" : "http://bit.ly/33bvXLZ"
+  }, {
+    "type" : "Planet",
+    "name" : "Jupiter",
+    "radius" : 69911.0,
+    "mass" : 1.898E27,
+    "semiMajorAxis" : 5.2044,
+    "eccentricity" : 0.049,
+    "orbitalPeriod" : 4380.0,
+    "centralCelestialBody" : {
+      "type" : "star",
+      "name" : "Sun",
+      "radius" : 695342.0,
+      "mass" : 1.9885E30,
+      "effectiveTemperature" : 5777.0,
+      "pictureUrl" : "http://bit.ly/333CTus"
+    },
+    "pictureUrl" : "http://bit.ly/2Q0fjK3"
   }, {
     "type" : "Planet",
     "name" : "Mars",
@@ -516,12 +499,12 @@
     "pictureUrl" : "http://bit.ly/3aGyFvr"
   }, {
     "type" : "Planet",
-    "name" : "Jupiter",
-    "radius" : 69911.0,
-    "mass" : 1.898E27,
-    "semiMajorAxis" : 5.2044,
-    "eccentricity" : 0.049,
-    "orbitalPeriod" : 4380.0,
+    "name" : "Mercury",
+    "radius" : 2439.7,
+    "mass" : 3.283E23,
+    "semiMajorAxis" : 0.387,
+    "eccentricity" : 0.206,
+    "orbitalPeriod" : 88.0,
     "centralCelestialBody" : {
       "type" : "star",
       "name" : "Sun",
@@ -530,7 +513,24 @@
       "effectiveTemperature" : 5777.0,
       "pictureUrl" : "http://bit.ly/333CTus"
     },
-    "pictureUrl" : "http://bit.ly/2Q0fjK3"
+    "pictureUrl" : "http://bit.ly/2TB2Heo"
+  }, {
+    "type" : "Planet",
+    "name" : "Neptune",
+    "radius" : 24622.0,
+    "mass" : 1.024E26,
+    "semiMajorAxis" : 30.11,
+    "eccentricity" : 0.01,
+    "orbitalPeriod" : 60225.0,
+    "centralCelestialBody" : {
+      "type" : "star",
+      "name" : "Sun",
+      "radius" : 695342.0,
+      "mass" : 1.9885E30,
+      "effectiveTemperature" : 5777.0,
+      "pictureUrl" : "http://bit.ly/333CTus"
+    },
+    "pictureUrl" : "http://bit.ly/38AyEba"
   }, {
     "type" : "Planet",
     "name" : "Saturn",
@@ -567,12 +567,12 @@
     "pictureUrl" : "http://bit.ly/335pbHy"
   }, {
     "type" : "Planet",
-    "name" : "Neptune",
-    "radius" : 24622.0,
-    "mass" : 1.024E26,
-    "semiMajorAxis" : 30.11,
-    "eccentricity" : 0.01,
-    "orbitalPeriod" : 60225.0,
+    "name" : "Venus",
+    "radius" : 6051.8,
+    "mass" : 4.867E24,
+    "semiMajorAxis" : 0.723,
+    "eccentricity" : 0.007,
+    "orbitalPeriod" : 225.0,
     "centralCelestialBody" : {
       "type" : "star",
       "name" : "Sun",
@@ -581,7 +581,7 @@
       "effectiveTemperature" : 5777.0,
       "pictureUrl" : "http://bit.ly/333CTus"
     },
-    "pictureUrl" : "http://bit.ly/38AyEba"
+    "pictureUrl" : "http://bit.ly/2W3p4L9"
   } ],
   "pictureUrl" : "http://bit.ly/3cVhuZc"
 }, {

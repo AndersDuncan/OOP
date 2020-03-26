@@ -34,7 +34,7 @@ public class Application {
                 universeController.getAllSystems(context);
             }
         });
-/*
+
         app.get("api/planet-systems/:planet-system-id/", new Handler() {
             @Override
             public void handle(Context context) throws Exception {
@@ -60,6 +60,6 @@ public class Application {
 
 
 
- */
+
     }
 }

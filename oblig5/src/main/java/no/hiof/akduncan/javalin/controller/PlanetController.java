@@ -74,16 +74,13 @@ public class PlanetController {
         double eccentricity = Double.parseDouble(ctx.formParam("eccentricity"));
         double orbitalPeriod = Double.parseDouble(ctx.formParam("orbitalPeriod"));
         String pictureUrl = ctx.formParam("pictureUrl");
-        System.out.println("mass print: " + mass);
         Planet usermade = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
-        System.out.println(usermade);
         universeRepository.getAllPlanets(relevantSystem).add(usermade);
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
         ctx.json(usermade);
         ctx.redirect("/planet-systems/" + relevantSystem);
     }
 
-/*
     public void updateAPlanet(Context ctx) {
         String relevantSystem = ctx.pathParam(":planet-system-id");
         String relevantPlanet = ctx.pathParam(":planet-id");
@@ -95,14 +92,18 @@ public class PlanetController {
         double eccentricity = Double.parseDouble(ctx.formParam("eccentricity"));
         double orbitalPeriod = Double.parseDouble(ctx.formParam("orbitalPeriod"));
         String pictureUrl = ctx.formParam("pictureUrl");
-        Planet  = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
-        System.out.println(usermade);
-        universeRepository.getAllPlanets(relevantSystem).add(usermade);
+        Planet aPlanet = universeRepository.getAPlanet(relevantSystem, relevantPlanet);
+        aPlanet.setName(name);
+        aPlanet.setMass(mass);
+        aPlanet.setRadius(radius);
+        aPlanet.setSemiMajorAxis(semiMajorAxis);
+        aPlanet.setEccentricity(eccentricity);
+        aPlanet.setOrbitalPeriod(orbitalPeriod);
+        aPlanet.setPictureUrl(pictureUrl);
 
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
-        ctx.json(usermade);
+        ctx.json(aPlanet);
         ctx.redirect("/planet-systems/" + relevantSystem);
     }
 
- */
 }

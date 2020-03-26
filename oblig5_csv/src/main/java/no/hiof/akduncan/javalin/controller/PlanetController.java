@@ -7,6 +7,7 @@ import no.hiof.akduncan.javalin.model.PlanetSystem;
 import no.hiof.akduncan.javalin.repository.*;
 import no.hiof.akduncan.javalin.Application;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +20,7 @@ public class PlanetController {
         this.universeRepository = universeRepository;
     }
 
-    /*public void getAllPlanets(Context ctx) {
+    public void getAllPlanets(Context ctx) {
         String relevantSystem = ctx.pathParam(":planet-system-id");
         String sortBy = ctx.queryParam("sort_by");
 
@@ -47,13 +48,8 @@ public class PlanetController {
         String relevantPlanet = ctx.pathParam(":planet-id");
 
         Planet aPlanet = universeRepository.getAPlanet(relevantSystem, relevantPlanet);
-
         ctx.json(aPlanet);
 
     }
-
-     */
-
-
 
 }

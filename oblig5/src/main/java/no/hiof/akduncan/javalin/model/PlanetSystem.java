@@ -6,9 +6,19 @@ import java.util.List;
 public class PlanetSystem implements Comparable<PlanetSystem> {
     private String name;
     private Star centerStar;
-    private ArrayList<Planet> planets;
+    private ArrayList<Planet> planets = new ArrayList<Planet>();
     private String pictureUrl;
 
+
+    public PlanetSystem(String name, Star centerStar, String pictureUrl) {
+        this.name = name;
+        this.centerStar = centerStar;
+        this.pictureUrl = pictureUrl;
+    }
+
+    public void addPlanet(Planet planet) {
+        planets.add(planet);
+    }
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;

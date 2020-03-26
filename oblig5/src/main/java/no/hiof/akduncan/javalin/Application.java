@@ -75,12 +75,21 @@ public class Application {
         app.post("/api/planet-systems/:planet-system-id/planets/:planet-id/update", new Handler() {
             @Override
             public void handle(Context ctx) throws Exception {
+                planetController.updateAPlanet(ctx);
+            }
+        });
+
+
+        /*
+        //This also works by deleting, then creating one with the values in the form. No need for new methods
+        app.post("/api/planet-systems/:planet-system-id/planets/:planet-id/update", new Handler() {
+            @Override
+            public void handle(Context ctx) throws Exception {
                 planetController.deleteAPlanet(ctx);
                 planetController.createAPlanet(ctx);
             }
         });
 
-
-
+         */
     }
 }

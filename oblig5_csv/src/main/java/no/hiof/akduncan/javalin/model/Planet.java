@@ -15,7 +15,7 @@ public class Planet extends NaturalSatellite{
         this.pictureUrl = pictureUrl;
     }
 
-    public Planet(String name, double mass, double radius, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
+    public Planet(String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
         super(name, mass, radius, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody);
         this.pictureUrl = pictureUrl;
     }
@@ -42,10 +42,10 @@ public class Planet extends NaturalSatellite{
 
     @Override
     public String toString(){
-        return "Name: " + super.getName() + ". radius: " + super.getRadius() + " km. mass: " + super.getRadius()
+        /*return "Name: " + super.getName() + ". radius: " + super.getRadius() + " km. mass: " + super.getRadius()
                 + " kg. It's mass in Mjup is: " + massInMjup() + " and radius in Rjup is: " + radiusInRjup()+
                 ". It has a surface gravity of: " + surfaceGravity() + " m/s^2"+"\n";
+         */
+        return super.getName();
     }
 }
-
-
