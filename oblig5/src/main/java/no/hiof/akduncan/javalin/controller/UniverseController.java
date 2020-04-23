@@ -20,14 +20,13 @@ public class UniverseController {
 
     public void getAllSystems(Context context) {
 
-
-        //For CSV
-        //ArrayList<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
-
-        List<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
+        ArrayList<PlanetSystem> allSystems = universeRepository.getPlanetSystems();
 
 
         context.json(allSystems);
+
+        //Used as test when making writeToCsv. Made a new file to check for inconsistencies.
+        //universeRepository.writeToCsv(universeRepository.getPlanetSystems(), new File("planets_100new.csv"));
 
     }
 

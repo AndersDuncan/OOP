@@ -13,29 +13,29 @@ import java.util.List;
 
 public class UniverseJSONRepository implements IUniverseRepository {
 
-    static List<PlanetSystem> newList = fromJson("planets_100.json");
+    ArrayList<PlanetSystem> newList = fromJson("planets_100.json");
 
 
-    public static List<PlanetSystem> fromJson(String filename) {
-        List<PlanetSystem> planetSystems = new ArrayList<>();
+    public ArrayList<PlanetSystem> fromJson(String filename) {
+        ArrayList<PlanetSystem> planetSystems = new ArrayList<>();
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
             PlanetSystem[] systemArray = objectMapper.readValue(new File(filename), PlanetSystem[].class);
 
-            planetSystems = Arrays.asList(systemArray);
+            planetSystems.addAll(Arrays.asList(systemArray));
         } catch (IOException e) {
             e.printStackTrace(System.out);
         }
-
+        System.out.println(planetSystems);
         return planetSystems;
     }
 
     public class saveRunnable implements Runnable{
         private String filename;
-        private List<PlanetSystem> planetSystems;
-        public saveRunnable(String filename, List<PlanetSystem> planetSystems){
+        private ArrayList<PlanetSystem> planetSystems;
+        public saveRunnable(String filename, ArrayList<PlanetSystem> planetSystems){
             this.filename = filename;
             this.planetSystems = planetSystems;
         }
@@ -52,13 +52,19 @@ public class UniverseJSONRepository implements IUniverseRepository {
         }
     }
 
-    public void saveToJson(String filename, List<PlanetSystem> planetSystems) {
+    public void saveToJson(String filename, ArrayList<PlanetSystem> planetSystems) {
         Runnable save = new saveRunnable(filename,planetSystems);
         new Thread(save).start();
     }
 
+    //Easier to have it here when switching between repositories
     @Override
-    public List<PlanetSystem> getPlanetSystems() {
+    public void writeToCsv(ArrayList<PlanetSystem> planetSystems, File file) {
+
+    }
+
+    @Override
+    public ArrayList<PlanetSystem> getPlanetSystems() {
         return newList;
     }
 
@@ -109,29 +115,15 @@ public class UniverseJSONRepository implements IUniverseRepository {
                 }
             }
         }
-
     }
 
 
 
     @Override
     public Planet makePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
-        PlanetSystem aSystem = getAPlanetSystem(systemName);
         return new Planet(name, mass, radius, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody, pictureUrl);
     }
 
-    @Override
-    public Planet UpdatePlanet(String systemName, String name) {
-        PlanetSystem aSystem = getAPlanetSystem(systemName);
-
-        if (aSystem != null) {
-            for(Planet aPlanet: aSystem.getPlanets()) {
-                if (aPlanet.getName().equals(name))
-                    return aPlanet;
-            }
-        }
-        return null;
-    }
 }
 
 

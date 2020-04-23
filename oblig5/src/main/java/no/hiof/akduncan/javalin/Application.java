@@ -7,6 +7,7 @@ import io.javalin.plugin.rendering.vue.VueComponent;
 import no.hiof.akduncan.javalin.controller.PlanetController;
 import no.hiof.akduncan.javalin.controller.UniverseController;
 import no.hiof.akduncan.javalin.repository.UniverseJSONRepository;
+import no.hiof.akduncan.javalin.repository.UniverseCSVRepository;
 import org.jetbrains.annotations.NotNull;
 
 public class Application {
@@ -23,6 +24,7 @@ public class Application {
         app.get("/planet-systems/:planet-system-id/createplanet", new VueComponent("planet-create"));
 
         UniverseJSONRepository universeRepository = new UniverseJSONRepository();
+        //UniverseCSVRepository universeRepository = new UniverseCSVRepository();
         UniverseController universeController = new UniverseController(universeRepository);
         PlanetController planetController = new PlanetController(universeRepository);
 

@@ -10,10 +10,10 @@ import java.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
-/*
+
 public class UniverseCSVRepository implements IUniverseRepository{
 
-    File source = new File("planets_100new.csv");
+    File source = new File("planets_100.csv");
 
     HashMap<String, PlanetSystem> newMap = new HashMap<>();
 
@@ -105,17 +105,34 @@ public class UniverseCSVRepository implements IUniverseRepository{
         return newMap.get(name);
     }
 
+    //Easier to have it here when switching between repositories
+    @Override
+    public Planet makePlanet(String systemName, String name, double mass, double radius, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centralCelestialBody, String pictureUrl) {
+        return null;
+    }
+
+    //Easier to have it here when switching between repositories
+    @Override
+    public void deletePlanet(String systemName, String planetName) {
+
+    }
+
+    //Easier to have it here when switching between repositories
+    @Override
+    public void saveToJson(String filename, ArrayList<PlanetSystem> name) {
+
+    }
+
     @Override
     public void writeToCsv(ArrayList<PlanetSystem> planetSystems, File file) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
 
                 for( PlanetSystem aSystem : planetSystems ) {
 
-                    for (int i = 0; i < aSystem.getPlanets().size(); i++){
+                    for( Planet aPlanet : aSystem.getPlanets()){
                         bufferedWriter.write(aSystem.getName() + "," + aSystem.getPictureUrl() + "," + aSystem.getCenterStar().getName() + "," + aSystem.getCenterStar().getMass() + ","
-                                + aSystem.getCenterStar().getRadius() + "," + aSystem.getCenterStar().getEffectiveTemperature() + "," + aSystem.getCenterStar().getPictureUrl() + "," + aSystem.getPlanets().get(i).getName() + "," +
-                                aSystem.getPlanets().get(i).getMass() + "," + aSystem.getPlanets().get(i).getRadius() + "," + aSystem.getPlanets().get(i).getSemiMajorAxis() + "," + aSystem.getPlanets().get(i).getEccentricity() + "," +
-                                aSystem.getPlanets().get(i).getOrbitalPeriod() + "," + aSystem.getPlanets().get(i).getPictureUrl() + "\n");
+                                + aSystem.getCenterStar().getRadius() + "," + aSystem.getCenterStar().getEffectiveTemperature() + "," + aSystem.getCenterStar().getPictureUrl() + "," + aPlanet.getName() + "," + aPlanet.getMass() + "," +
+                                aPlanet.getRadius() + "," + aPlanet.getSemiMajorAxis() + "," + aPlanet.getEccentricity() + "," + aPlanet.getOrbitalPeriod() + "," + aPlanet.getPictureUrl() + "\n");
                     }
 
                 }
@@ -128,7 +145,7 @@ public class UniverseCSVRepository implements IUniverseRepository{
         }
     }
 
- */
+
 
 
 

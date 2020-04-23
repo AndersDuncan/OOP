@@ -1,0 +1,201 @@
+[ {
+  "animal" : {
+    "type" : "amphibians",
+    "numberOfLegs" : 0,
+    "scientificName" : "formidulosus piscis",
+    "name" : "Aboleth",
+    "diet" : "Anything it can",
+    "bodylength" : 600,
+    "methodOfBreathing" : "Absorbs oxygen through their skin",
+    "eggFertilizing" : "Internal"
+  },
+  "name" : "Aboleths",
+  "location" : {
+    "biome" : {
+      "environment" : "Aquatic",
+      "weatherConditions" : "Underwater"
+    },
+    "latitude" : 8.62214,
+    "longitude" : 152.81743,
+    "foodsource" : "Krill",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Ophelia",
+      "radius" : 63627.88,
+      "mass" : 1.95494E27,
+      "system" : "Schindelgeist"
+    }
+  },
+  "id" : 372,
+  "comment" : "test",
+  "picture" : "https://vignette.wikia.nocookie.net/forgottenrealms/images/5/58/Monster_Manual_5e_-_Aboleth_-p13.jpg/revision/latest?cb=20200313153917",
+  "timeOfDiscovery" : [ 2575, 5, 13 ],
+  "estimatedPopulation" : 60000
+}, {
+  "animal" : {
+    "type" : "birds",
+    "numberOfLegs" : 4,
+    "scientificName" : "nympharum plus draco",
+    "name" : "Faerie Dragon",
+    "diet" : "Small prey & berries",
+    "bodylength" : 60,
+    "flyingSpeed" : 18,
+    "wingColour" : "Varies by it's age",
+    "wingspan" : 120
+  },
+  "name" : "Faerie Dragons",
+  "location" : {
+    "biome" : {
+      "environment" : "Woodlands",
+      "weatherConditions" : "Rainy and damp"
+    },
+    "latitude" : 38.67749,
+    "longitude" : -121.774719,
+    "foodsource" : "Bugs and fruit",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Cadia",
+      "radius" : 14012.432,
+      "mass" : 4.209764E25,
+      "system" : "Uhulis"
+    }
+  },
+  "id" : 1432,
+  "comment" : "test",
+  "picture" : "https://vignette.wikia.nocookie.net/forgottenrealms/images/f/f4/Faerie_dragon-5e.jpg/revision/latest/scale-to-width-down/350?cb=20171010161947",
+  "timeOfDiscovery" : [ 2571, 3, 18 ],
+  "estimatedPopulation" : 5700000
+}, {
+  "animal" : {
+    "type" : "invertebrate",
+    "numberOfLegs" : 22,
+    "scientificName" : "arcanum summa",
+    "name" : "Flumph",
+    "diet" : "Feelings & emotions",
+    "bodylength" : 40,
+    "roleInNature" : "Unknown",
+    "abilityToFly" : true
+  },
+  "name" : "Flumphs",
+  "location" : {
+    "biome" : {
+      "environment" : "Arctic",
+      "weatherConditions" : "Cold & windy"
+    },
+    "latitude" : 21.92979,
+    "longitude" : 61.12609,
+    "foodsource" : "Various birds and bugs",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Cadia",
+      "radius" : 14012.432,
+      "mass" : 4.209764E25,
+      "system" : "Uhulis"
+    }
+  },
+  "id" : 5666,
+  "comment" : "Not sure how it survives in this vast empty place",
+  "picture" : "https://vignette.wikia.nocookie.net/forgottenrealms/images/7/78/Flumph.jpg/revision/latest/scale-to-width-down/350?cb=20171010183015",
+  "timeOfDiscovery" : [ 2566, 9, 1 ],
+  "estimatedPopulation" : 10000
+}, {
+  "animal" : {
+    "type" : "amphibians",
+    "numberOfLegs" : 2,
+    "scientificName" : "purpura sponsione ranarum",
+    "name" : "Kuo-Toa",
+    "diet" : "Algae and fish",
+    "bodylength" : 150,
+    "methodOfBreathing" : "Gills & lungs",
+    "eggFertilizing" : "External"
+  },
+  "name" : "Kuo-Toa's",
+  "location" : {
+    "biome" : {
+      "environment" : "Aquatic",
+      "weatherConditions" : "Underwater"
+    },
+    "latitude" : -2.46141,
+    "longitude" : 1.25031,
+    "foodsource" : "Algae",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Ophelia",
+      "radius" : 63627.88,
+      "mass" : 1.95494E27,
+      "system" : "Schindelgeist"
+    }
+  },
+  "id" : 371,
+  "comment" : "test",
+  "picture" : "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/28/Kuo-toa-5e.jpg/revision/latest?cb=20190710143644",
+  "timeOfDiscovery" : [ 2575, 5, 9 ],
+  "estimatedPopulation" : 90000000
+}, {
+  "animal" : {
+    "type" : "invertebrate",
+    "numberOfLegs" : 0,
+    "scientificName" : "gelata",
+    "name" : "Ochre Jelly",
+    "diet" : "Vegetation & bugs",
+    "bodylength" : 120,
+    "roleInNature" : "Decomposer",
+    "abilityToFly" : false
+  },
+  "name" : "Ochre Jellies",
+  "location" : {
+    "biome" : {
+      "environment" : "Grasslands",
+      "weatherConditions" : "Sunny & mild"
+    },
+    "latitude" : 51.3714,
+    "longitude" : 58.41144,
+    "foodsource" : "Vegetation & Prey",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Taglios",
+      "radius" : 107952.92,
+      "mass" : 3.492320000003E27,
+      "system" : "Siren's Storm"
+    }
+  },
+  "id" : 2514,
+  "comment" : "test",
+  "picture" : "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/279/327/315/636252770058723674.jpeg",
+  "timeOfDiscovery" : [ 2567, 11, 12 ],
+  "estimatedPopulation" : 390000
+}, {
+  "animal" : {
+    "type" : "birds",
+    "numberOfLegs" : 2,
+    "scientificName" : "prodigiosum in alis",
+    "name" : "Peryton",
+    "diet" : "Bigger prey & unsuspecting explorers",
+    "bodylength" : 200,
+    "flyingSpeed" : 25,
+    "wingColour" : "Purple",
+    "wingspan" : 340
+  },
+  "name" : "Perytons",
+  "location" : {
+    "biome" : {
+      "environment" : "Desert",
+      "weatherConditions" : "Hot & dry"
+    },
+    "latitude" : -23.29837,
+    "longitude" : -83.5535,
+    "foodsource" : "Cacti-like vegetation",
+    "planet" : {
+      "habitats" : [ ],
+      "name" : "Taglios",
+      "radius" : 107952.92,
+      "mass" : 3.492320000003E27,
+      "system" : "Siren's Storm"
+    }
+  },
+  "id" : 1073,
+  "comment" : "test",
+  "picture" : "https://vignette.wikia.nocookie.net/forgottenrealms/images/8/8d/Peryton5e.png/revision/latest?cb=20171010174015",
+  "timeOfDiscovery" : [ 2572, 12, 24 ],
+  "estimatedPopulation" : 30000
+} ]

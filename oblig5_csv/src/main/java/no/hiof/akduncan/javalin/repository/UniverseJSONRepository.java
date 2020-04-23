@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-/*
+
 public class UniverseJSONRepository implements IUniverseRepository{
 
     static List<PlanetSystem> newList = fromJson("planets_4000.json");

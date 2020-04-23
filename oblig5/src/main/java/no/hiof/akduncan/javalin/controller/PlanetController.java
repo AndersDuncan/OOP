@@ -74,7 +74,8 @@ public class PlanetController {
         double eccentricity = Double.parseDouble(ctx.formParam("eccentricity"));
         double orbitalPeriod = Double.parseDouble(ctx.formParam("orbitalPeriod"));
         String pictureUrl = ctx.formParam("pictureUrl");
-        Planet usermade = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,universeRepository.getAPlanetSystem(relevantSystem).getCenterStar(),pictureUrl);
+        CelestialBody centerStar = universeRepository.getAPlanetSystem(relevantSystem).getCenterStar();
+        Planet usermade = universeRepository.makePlanet(relevantSystem,name,mass,radius,semiMajorAxis,eccentricity,orbitalPeriod,centerStar,pictureUrl);
         universeRepository.getAllPlanets(relevantSystem).add(usermade);
 
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
@@ -101,7 +102,6 @@ public class PlanetController {
         aPlanet.setEccentricity(eccentricity);
         aPlanet.setOrbitalPeriod(orbitalPeriod);
         aPlanet.setPictureUrl(pictureUrl);
-
 
         universeRepository.saveToJson("planets_100.json", universeRepository.getPlanetSystems());
         ctx.json(aPlanet);
